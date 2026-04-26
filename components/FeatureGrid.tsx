@@ -6,23 +6,23 @@ const features = [
   {
     title: "Air-Guard Corners",
     desc: "Reinforced corners for extreme drop protection.",
-    img: "https://images.unsplash.com/photo-1605236453806-6ff36851218e?auto=format&fit=crop&q=80&w=600",
+    img: "/photos/romance.webp",
     className: "md:col-span-2 md:row-span-2"
   },
   {
     title: "Crystal Clear",
     desc: "Anti-yellowing coating keeps it looking new.",
-    img: "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&q=80&w=400",
+    img: "/photos/PhoneCaseMoulds10.webp",
   },
   {
     title: "MagSafe Ready",
     desc: "Powerful built-in magnets for seamless charging.",
-    img: "https://images.unsplash.com/photo-1586953101527-440673079c65?auto=format&fit=crop&q=80&w=400",
+    img: "/photos/cyber_y2k.webp",
   },
   {
     title: "Soft Touch",
     desc: "Premium liquid silicone for the ultimate grip.",
-    img: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&q=80&w=600",
+    img: "/photos/cover_1_1.webp",
     className: "md:col-span-2"
   }
 ];

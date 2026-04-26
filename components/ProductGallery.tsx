@@ -4,12 +4,11 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-
 const images = [
-  'https://images.unsplash.com/photo-1605236453806-6ff36851218e?auto=format&fit=crop&q=80&w=800',
-  'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&q=80&w=800',
-  'https://images.unsplash.com/photo-1586953101527-440673079c65?auto=format&fit=crop&q=80&w=800',
-  'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&q=80&w=800',
+  '/photos/cover_2.webp',
+  '/photos/cover_2_1.webp',
+  '/photos/cover_2_2.webp',
+  '/photos/cover_2_3.webp',
 ];
 
 export default function ProductGallery() {
