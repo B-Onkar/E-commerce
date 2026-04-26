@@ -1,65 +1,90 @@
-import Image from "next/image";
+'use client';
+
+import AnnouncementBar from '@/components/AnnouncementBar';
+import Navbar from '@/components/Navbar';
+import ProductGallery from '@/components/ProductGallery';
+import ProductInfo from '@/components/ProductInfo';
+import BulkOfferCards from '@/components/BulkOfferCards';
+import PriceBreakdown from '@/components/PriceBreakdown';
+import CheckoutButton from '@/components/CheckoutButton';
+import FeatureGrid from '@/components/FeatureGrid';
+import SpecsTable from '@/components/SpecsTable';
+import ReviewsSection from '@/components/ReviewsSection';
+import FAQSection from '@/components/FAQSection';
+import TrustBadges from '@/components/TrustBadges';
+import Footer from '@/components/Footer';
+import { motion } from 'framer-motion';
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+    <div className="min-h-screen bg-white selection:bg-red-100 selection:text-red-600">
+      <AnnouncementBar />
+      <Navbar />
+      
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        {/* Breadcrumbs */}
+        <nav className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-gray-400 mb-8 overflow-x-auto whitespace-nowrap pb-2 scrollbar-hide">
+          <span className="hover:text-black cursor-pointer">Home</span>
+          <span>/</span>
+          <span className="hover:text-black cursor-pointer">iPhone Covers</span>
+          <span>/</span>
+          <span className="text-black">Signature Liquid Silicone</span>
+        </nav>
+
+        {/* Product Section */}
+        <div className="flex flex-col lg:flex-row gap-12 xl:gap-20 items-start relative">
+          {/* Left: Sticky Gallery */}
+          <div className="w-full lg:w-[55%] lg:sticky lg:top-24 h-fit">
+            <ProductGallery />
+          </div>
+          
+          {/* Right: Scrolling Info */}
+          <div className="w-full lg:w-[45%] space-y-8">
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+              <ProductInfo />
+              
+              {/* Bulk Offers Section - Grouped with Buy Now */}
+              <div className="bg-white border border-gray-100 rounded-[2.5rem] p-6 shadow-sm">
+                <BulkOfferCards />
+                <PriceBreakdown />
+                <CheckoutButton />
+              </div>
+
+              {/* Delivery Info */}
+              <div className="mt-8 p-6 border-2 border-dashed border-gray-100 rounded-[2rem] bg-gray-50/50">
+                <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-4">Check Delivery Availability</p>
+                <div className="flex gap-2">
+                  <input 
+                    type="text" 
+                    placeholder="Enter Pincode" 
+                    className="flex-1 px-4 py-3 bg-white border border-gray-200 rounded-xl text-sm font-bold focus:outline-none focus:border-black transition-colors shadow-sm"
+                  />
+                  <button className="px-6 py-3 bg-black text-white text-xs font-black uppercase tracking-widest rounded-xl hover:bg-red-600 transition-all shadow-lg active:scale-95 italic">Check</button>
+                </div>
+                <div className="flex items-center gap-2 mt-4">
+                  <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" />
+                  <p className="text-[10px] font-bold text-gray-500 uppercase tracking-tight">Express Delivery Available in most cities</p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        {/* Secondary Sections */}
+        <div className="space-y-20 mt-20">
+          <FeatureGrid />
+          <SpecsTable />
+          <TrustBadges />
+          <ReviewsSection />
+          <FAQSection />
         </div>
       </main>
+
+      <Footer />
     </div>
   );
 }
