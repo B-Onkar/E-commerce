@@ -8,8 +8,30 @@ import { Package, ChevronRight, CheckCircle2, AlertCircle, Filter } from 'lucide
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 
+interface OrderItem {
+  name: string;
+  quantity: number;
+  price: number;
+}
+
+interface Order {
+  _id: string;
+  razorpay_order_id: string;
+  razorpay_payment_id?: string;
+  amount: number;
+  currency: string;
+  status: string;
+  payment_method: string;
+  is_prepaid: boolean;
+  customer_name: string;
+  email: string;
+  phone: string;
+  items: OrderItem[];
+  created_at: string;
+}
+
 export default function OrdersPage() {
-  const [orders, setOrders] = useState<any[]>([]);
+  const [orders, setOrders] = useState<Order[]>([]);
   const [filter, setFilter] = useState('prepaid');
   const [loading, setLoading] = useState(true);
 
@@ -17,8 +39,8 @@ export default function OrdersPage() {
     setLoading(true);
     try {
       const res = await fetch(`/api/prepaid-orders?filter=${currentFilter}`);
-      const data = await res.json();
-      setOrders(Array.isArray(data) ? data : []);
+      const data: unknown = await res.json();
+      setOrders(Array.isArray(data) ? (data as Order[]) : []);
     } catch (err) {
       console.error(err);
     } finally {
